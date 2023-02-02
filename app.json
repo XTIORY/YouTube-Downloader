@@ -1,53 +1,63 @@
 {
-  "name": "سورس الجوكر المجاني | Source Flex Free",
-  "description": "اللهم صلِ على محمد وآل محمد",
-  "logo": "https://telegra.ph/file/83ee584aef1c4db1d9597.jpg",
+  "name": "Small Sharp Tool",
+  "description": "This app does one little thing, and does it well.",
   "keywords": [
-    "plugin",
-    "modular",
-    "productivity"
+    "productivity",
+    "HTML5",
+    "scalpel"
   ],
+  "website": "https://github.com/XTIORY/YouTube-Downloader",
   "repository": "https://github.com/XTIORY/YouTube-Downloader",
-  "website": "#TODO",
-  "success_url": "#TODO",
+  "logo": "https://small-sharp-tool.com/logo.svg",
+  "success_url": "/welcome",
+  "scripts": {
+    "postdeploy": "bundle exec rake bootstrap"
+  },
   "env": {
-    "ALIVE_NAME": {
-      "description": "هنا ضع اسم التلجرام الخاص بك",
-      "value": ""
-    },
-    "APP_ID": {
-      "description": "هنا ضع الاب ايدي الخاص بك يتكون من 8 ارقام", 
-      "value": ""
+    "API_ID": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
     },
     "API_HASH": {
-      "description": "هنا ضع الايبي هاش الخاص بك",
-      "value": ""
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
     },
-    "BOT_TOKEN": {
-      "description": "هنا ضع توكن بوتك الذي صنعته",
-      "value": ""
+    "BOT_TOKEN ": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+     }
     },
-  "addons": [{
-    "plan": "heroku-postgresql",
-    "options": {
-      "version": "12"
+  
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "standard-1x"
     }
-  }],
-  "buildpacks": [{
-    "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
-  },{
-    "url":"https://github.com/heroku/heroku-buildpack-google-chrome"
-  },{
-    "url":"https://github.com/heroku/heroku-buildpack-chromedriver"
-  },{
-    "url": "https://github.com/riganf/heroku-buildpack-p7zip"
-  },{
-    "url": "https://github.com/rahulps1000/heroku-buildpack-nodejs"
-  },{
-    "url": "https://github.com/heroku/heroku-buildpack-apt.git"
-  },{
-    "url": "https://github.com/chrismytton/heroku-buildpack-jq"
-  },{
-    "url": "heroku/python"
-  }]
+  },
+  "image": "heroku/ruby",
+  "addons": [
+    "openredis",
+    {
+      "plan": "mongolab:shared-single-small",
+      "as": "MONGO"
+    },
+    {
+      "plan": "heroku-postgresql",
+      "options": {
+        "version": "9.5"
+      }
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/stomita/heroku-buildpack-phantomjs"
+    }
+  ],
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "bundle exec rake test"
+      }
+    }
+  }
 }
