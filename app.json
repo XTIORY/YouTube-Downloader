@@ -16,15 +16,15 @@
   "env": {
     "API_ID": {
       "description": "A secret key for verifying the integrity of signed cookies.",
-      "generator": "secret"
+      "": "secret"
     },
     "API_HASH": {
       "description": "A secret key for verifying the integrity of signed cookies.",
-      "generator": "secret"
+      "": "secret"
     },
     "BOT_TOKEN ": {
       "description": "A secret key for verifying the integrity of signed cookies.",
-      "generator": "secret"
+      "": "secret"
      }
     },
   
